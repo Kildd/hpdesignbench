@@ -1,0 +1,27 @@
+_docs/_build
+_mains/archive
+**/__pycache__/
+*.pyc
+*.pyo
+*.tmp
+
+# Local environments and experiment outputs
+/data/
+.venv/
+*.egg-info/
+/experiments/
+**/logger_results/
+_mains/Testing/outputs/
+_mains/studies/Execution/outputs/
+_mains/studies/ELA/s42_machine.toml
+_mains/studies/ELA/e42_n32768_machine.toml
+_mains/studies/ELA/ld3_ic_machine.toml
+_mains/studies/ELA/e6c_cm_machine.toml
+_mains/studies/ELA/ils_lon_machine.toml
+_mains/studies/ELA/nested_prefix_machine.toml
+
+# Do not ignore Parquet globally: Phase B may commit small fixtures.
+# Ignore only local experiment trees above.
+
+# Figures produced by drawings/
+drawings/outputs/

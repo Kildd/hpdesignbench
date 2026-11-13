@@ -1,0 +1,87 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hpdesignbench"
+version = "1.0.0"
+description = "Benchmarking framework for structural optimization of HP shell slab constructions"
+readme = "README.md"
+requires-python = ">=3.12"
+dynamic = ["dependencies"]
+
+[project.optional-dependencies]
+algorithms-pymoo = ["pymoo>=0.6.2,<0.7"]
+algorithms-hyperopt = ["hyperopt>=0.3.0,<0.4"]
+algorithms-rbfopt = ["rbfopt>=4.3.0,<4.4"]
+algorithms-optuna = ["optuna>=4.0.0,<5"]
+algorithms-leap = ["leap-ec>=0.8.2,<0.9"]
+algorithms-cmaes = ["cmaes>=0.13.0,<0.14"]
+algorithms-starpso = ["starpso>=0.1.3,<0.2"]
+algorithms-nevergrad = ["nevergrad>=1.0.12,<1.1"]
+algorithms-smt = ["smt>=2.14.1,<2.15"]
+algorithms-blackboxoptim = ["blackboxoptim>=1.1.0,<1.2"]
+algorithms-altbacken = ["altbacken>=0.15.1,<0.16"]
+algorithms-dfl = []
+algorithms-nomad = ["PyNomadBBO>=4.5.1,<4.6"]
+algorithms-pfns4bo = [
+    "pfns4bo>=0.1.5,<0.2",
+    "torch>=2.1.0,<3",
+    "torchvision>=0.16.0,<1",
+]
+algorithms-optax = [
+    "optax>=0.2.8,<0.3",
+    "jax>=0.5.3,<0.10",
+    "jaxlib>=0.5.3,<0.10",
+]
+algorithms-all = [
+    "pymoo>=0.6.2,<0.7",
+    "hyperopt>=0.3.0,<0.4",
+    "rbfopt>=4.3.0,<4.4",
+    "optuna>=4.0.0,<5",
+    "leap-ec>=0.8.2,<0.9",
+    "cmaes>=0.13.0,<0.14",
+    "starpso>=0.1.3,<0.2",
+    "nevergrad>=1.0.12,<1.1",
+    "smt>=2.14.1,<2.15",
+    "blackboxoptim>=1.1.0,<1.2",
+    "altbacken>=0.15.1,<0.16",
+    "PyNomadBBO>=4.5.1,<4.6",
+    "pfns4bo>=0.1.5,<0.2",
+    "torch>=2.1.0,<3",
+    "torchvision>=0.16.0,<1",
+    "optax>=0.2.8,<0.3",
+    "jax>=0.5.3,<0.10",
+    "jaxlib>=0.5.3,<0.10",
+]
+bruteforce = ["pyarrow>=25.0.0,<26"]
+bruteforce-analysis = ["duckdb>=1.2.0,<2"]
+la = [
+    "pyarrow>=25.0.0,<26",
+    "duckdb>=1.2.0,<2",
+    "numdifftools>=0.9.40,<1",
+]
+sensitivity = [
+    "pyarrow>=25.0.0,<26",
+    "SALib>=1.5.1,<1.6",
+]
+visualization-interactive = ["plotly>=5.18,<7"]
+
+[project.scripts]
+hdb-experiment = "core.ioh_core.workflows.cli:main"
+hdb-bf-analyze = "core.ioh_core.workflows.brute_force.analysis.cli:main"
+hdb-la-analyze = "core.ioh_core.workflows.la.cli:main"
+hdb-plot = "core.visualization_core.optimization.cli:main"
+hdb-structural-library = "core.ioh_core.structural_artifacts.cli:main"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["core*", "slab_construction*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"slab_construction.slabs" = ["**/*.csv"]
+"core.ioh_core.structural_artifacts" = ["competition_data/**"]

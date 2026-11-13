@@ -1,0 +1,58 @@
+{
+  "codec_version": 1,
+  "format": "arrow_ipc",
+  "id_start": 0,
+  "id_stop": 4,
+  "identity": {
+    "finish_names": [
+      "finish_a",
+      "finish_b"
+    ],
+    "finish_sizes": [
+      2,
+      2
+    ],
+    "full_cardinality": 16,
+    "input_hashes": {
+      "fixture": "competition-fixture-v1"
+    },
+    "problem_id": "fixture",
+    "run_config_fingerprint": "7cfc593a5f08e8f02246facd7e9b6445d938a3d8fcf28c031a35955d03d3ddc2",
+    "slab_type": "hp_slab",
+    "snapshot_hash": "competition-fixture-v1",
+    "structural_cardinality": 4,
+    "structural_names": [
+      "s0",
+      "s1"
+    ],
+    "structural_sizes": [
+      2,
+      2
+    ]
+  },
+  "key_algorithm_version": 1,
+  "manifest_version": 1,
+  "nrows": 4,
+  "parts": [
+    {
+      "bytes": 10114,
+      "id_start": 0,
+      "id_stop": 2,
+      "nrows": 2,
+      "path": "parts/structural-000000.arrow",
+      "sha256": "2e3b7bfede1f227f51303b2b4cae97496aa93221b2d1d1068ac173c4b177c24b",
+      "shard_index": 0
+    },
+    {
+      "bytes": 10842,
+      "id_start": 2,
+      "id_stop": 4,
+      "nrows": 2,
+      "path": "parts/structural-000001.arrow",
+      "sha256": "812074ff846641014ecef6f204c6584cbccf52b2ed24689a5bd3018be22c214f",
+      "shard_index": 1
+    }
+  ],
+  "rows_per_shard": 2,
+  "schema_version": 1
+}

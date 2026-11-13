@@ -1,0 +1,68 @@
+{
+  "codec_version": 1,
+  "columns": [
+    {
+      "name": "schema_version",
+      "type": "int32"
+    },
+    {
+      "name": "codec_version",
+      "type": "int32"
+    },
+    {
+      "name": "structural_id",
+      "type": "int64"
+    },
+    {
+      "name": "structural_indices",
+      "type": "list<item: int32>"
+    },
+    {
+      "name": "structural_key_digest",
+      "type": "string"
+    },
+    {
+      "name": "snapshot_hash",
+      "type": "string"
+    },
+    {
+      "name": "n",
+      "type": "double"
+    },
+    {
+      "name": "mk_cleared",
+      "type": "bool"
+    },
+    {
+      "name": "is_build_failure",
+      "type": "bool"
+    },
+    {
+      "name": "key_json",
+      "type": "string"
+    },
+    {
+      "name": "build_failure_json",
+      "type": "string"
+    },
+    {
+      "name": "m_u",
+      "type": "list<item: struct<result_type: string, x: double, limit_state: string, n: double, flipped: bool, payload_json: string>>"
+    },
+    {
+      "name": "m_cr",
+      "type": "list<item: struct<result_type: string, x: double, limit_state: string, n: double, flipped: bool, payload_json: string>>"
+    },
+    {
+      "name": "mk_curves",
+      "type": "list<item: struct<limit_state: string, constitutive_law: string, method: string, simplification_json: string, softening_json: string, n: double, m_k_num_points: int32, curves: list<item: struct<x: double, m_y: list<item: double>, chi_y: list<item: double>>>>>"
+    },
+    {
+      "name": "mk_metadata",
+      "type": "list<item: struct<limit_state: string, constitutive_law: string, method: string, simplification_json: string, softening_json: string, n: double, m_k_num_points: int32, payload_json: string>>"
+    }
+  ],
+  "format": "arrow_ipc",
+  "key_algorithm_version": 1,
+  "schema_version": 1
+}

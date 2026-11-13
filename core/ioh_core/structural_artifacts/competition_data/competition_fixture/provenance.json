@@ -1,0 +1,43 @@
+{
+  "codec_version": 1,
+  "format": "arrow_ipc",
+  "identity": {
+    "finish_names": [
+      "finish_a",
+      "finish_b"
+    ],
+    "finish_sizes": [
+      2,
+      2
+    ],
+    "full_cardinality": 16,
+    "input_hashes": {
+      "fixture": "competition-fixture-v1"
+    },
+    "problem_id": "fixture",
+    "run_config_fingerprint": "7cfc593a5f08e8f02246facd7e9b6445d938a3d8fcf28c031a35955d03d3ddc2",
+    "slab_type": "hp_slab",
+    "snapshot_hash": "competition-fixture-v1",
+    "structural_cardinality": 4,
+    "structural_names": [
+      "s0",
+      "s1"
+    ],
+    "structural_sizes": [
+      2,
+      2
+    ]
+  },
+  "key_algorithm_version": 1,
+  "library_root": "C:\\OD\\OneDrive - Technische Universit\u00e4t Berlin\\hpdesignbench\\core\\ioh_core\\structural_artifacts\\competition_data\\competition_fixture",
+  "manifest_sha256": "5c70241b1f71ab2fd2a57e56ce5c8cef6e7099b3e2ae060bf0a0699819da362a",
+  "nrows": 4,
+  "packages": {
+    "hpdesignbench": "0.1.0",
+    "numpy": "2.3.5",
+    "pyarrow": "25.0.0"
+  },
+  "rows_per_shard": 2,
+  "schema_version": 1,
+  "success_marker": true
+}

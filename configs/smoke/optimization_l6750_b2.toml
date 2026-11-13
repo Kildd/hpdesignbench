@@ -1,0 +1,39 @@
+# Two-evaluation identity check on L6750_B2.
+
+schema_version = 1
+
+[experiment]
+id = "identity_l6750_b2"
+workflow = "optimization_runs"
+slab_type = "hp_slab"
+problem_ids = ["L6750_B2"]
+output_root = "../../data"
+
+[[experiment.algorithms]]
+name = "RANDOM_SEARCH"
+max_evaluations = 2
+
+[experiment.repetitions]
+count = 2
+seed_base = 42
+
+[experiment.termination]
+mode = "fixed_target"
+global_optimum = 353.88457837247404
+allowed_deviation_percent = 1.0
+target_reference = "all"
+
+[execution]
+backend = "local"
+max_parallel_tasks = 1
+timeout_seconds = 600
+cpus_per_task = 1
+
+[execution.thread_environment]
+OMP_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+NUMEXPR_NUM_THREADS = "1"
+
+[execution.local]
+python_executable = ""

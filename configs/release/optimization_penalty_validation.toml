@@ -1,0 +1,226 @@
+# Penalty or constraint-aware optimisation. output_root is relative to this file.
+# Run from any directory:
+#   hdb-experiment run --config configs/release/optimization_penalty_validation.toml
+
+schema_version = 1
+
+[experiment]
+id = "penalty_validation"
+workflow = "optimization_runs"
+slab_type = "hp_slab"
+problem_ids = ["L6750_A1", "L6750_B1", "L7425_A1", "L7425_B1", "L7425_B2", "L8100_A1", "L8100_B1", "L8775_A1", "L8775_B1", "L8775_B2", "L9450_A1", "L9450_B1", "L10125_A1", "L10125_B1", "L10125_B2", "L10800_A1", "L10800_B1"]
+output_root = "../../data"
+
+[[experiment.algorithms]]
+name = "POPULATION_BASIN_HOPPING_PEN_SI_DESC_COLD_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "POPULATION_BASIN_HOPPING_PEN_SI_DESC_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "POPULATION_BASIN_HOPPING_PEN_EQU_DESC_COLD_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "POPULATION_BASIN_HOPPING_PEN_EQU_DESC_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "K_ELITE_AMS_PEN_SI_DESC_COLD_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "K_ELITE_AMS_PEN_SI_DESC_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "K_ELITE_AMS_PEN_EQU_DESC_COLD_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "K_ELITE_AMS_PEN_EQU_DESC_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "DISCRETE_MLSL_PEN_SI_DESC_COLD_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "DISCRETE_MLSL_PEN_SI_DESC_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "DISCRETE_MLSL_PEN_EQU_DESC_COLD_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "DISCRETE_MLSL_PEN_EQU_DESC_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "PYMOO_GA"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "PYMOO_GA_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "LEAP_GA"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "LEAP_GA_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "CMAES_CATCMAWM"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "CMAES_CATCMAWM_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "SCIPY_DIFFERENTIAL_EVOLUTION"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "SCIPY_DIFFERENTIAL_EVOLUTION_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "PYSTARPSO_INTEGER_PSO"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "PYSTARPSO_INTEGER_PSO_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "SCIPY_DUAL_ANNEALING"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "SCIPY_DUAL_ANNEALING_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "NEVERGRAD_METAMODEL"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "NEVERGRAD_METAMODEL_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "NEVERGRAD_METAMODEL_ONEPLUSONE"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "NEVERGRAD_METAMODEL_ONEPLUSONE_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "RBFOPT"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "RBFOPT_WARM_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "NLOPT_SBPLX"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "NLOPT_SBPLX_WARM_START"
+max_evaluations = 15000
+repetitions = 1
+
+[[experiment.algorithms]]
+name = "OPTAX_ADAM"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "OPTAX_ADAM_WARM_START"
+max_evaluations = 15000
+repetitions = 1
+
+[[experiment.algorithms]]
+name = "OPTAX_RPROP"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "OPTAX_RPROP_WARM_START"
+max_evaluations = 15000
+repetitions = 1
+
+[[experiment.algorithms]]
+name = "OPTAX_SGD_NESTEROV"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "OPTAX_SGD_NESTEROV_WARM_START"
+max_evaluations = 15000
+repetitions = 1
+
+[[experiment.algorithms]]
+name = "SOBOL_PEN_COLD_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "SOBOL_MULTISTART_PEN_SI_DESC_COLD_START"
+max_evaluations = 15000
+
+[[experiment.algorithms]]
+name = "SOBOL_MULTISTART_PEN_EQU_DESC_COLD_START"
+max_evaluations = 15000
+
+[experiment.repetitions]
+count = 20
+seed_base = 42
+
+[experiment.termination]
+mode = "fixed_target"
+allowed_deviation_percent = 1.0
+target_reference = "all"
+
+[experiment.termination.global_optima]
+L6750_A1 = 311.8975404292242
+L6750_B1 = 345.9548246486864
+L7425_A1 = 380.50704283385113
+L7425_B1 = 389.2235038853006
+L7425_B2 = 402.18841028444217
+L8100_A1 = 428.42449625423217
+L8100_B1 = 444.3294534203428
+L8775_A1 = 481.3103566442641
+L8775_B1 = 544.9094561884269
+L8775_B2 = 552.5374654743289
+L9450_A1 = 579.0385580050828
+L9450_B1 = 594.9882849430595
+L10125_A1 = 637.4424330987603
+L10125_B1 = 671.2263202863161
+L10125_B2 = 758.4937789707379
+L10800_A1 = 715.9271381530855
+L10800_B1 = 802.8226309033547
+
+[structural_artifacts]
+mode = "library"
+
+[execution]
+backend = "local"
+max_parallel_tasks = 4
+timeout_seconds = 7200
+cpus_per_task = 1
+
+[execution.thread_environment]
+OMP_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+NUMEXPR_NUM_THREADS = "1"
+
+[execution.local]
+python_executable = ""

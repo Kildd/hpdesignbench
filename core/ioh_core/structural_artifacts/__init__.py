@@ -1,0 +1,173 @@
+"""
+Shared structural-artifact identities, evaluation primitives, and sealed storage.
+
+Phase L0: structural mixed-radix indexing.
+Phase L1: versioned logical codec and Arrow IPC runtime format (probe removed).
+Phase L2: shared StructuralArtifact primitives and compute/library providers.
+Phase L3: sealed random-access Arrow IPC library reader/writer.
+Phase L5: prepare-time backend sealing and worker revalidation.
+Phase L9: competition fixture, audit API, and operator CLI.
+"""
+from __future__ import annotations
+
+from core.ioh_core.structural_artifacts.artifact import (
+    StructuralArtifact,
+    StructuralReuseError,
+    apply_structural_artifact,
+    capture_structural_artifact,
+    fanout_build_failure,
+    get_structural_build_count,
+    make_structural_key,
+    normalize_structural_key,
+    reset_structural_build_count,
+    scientific_values_equal,
+    structural_keys_match,
+)
+from core.ioh_core.structural_artifacts.codec import (
+    CODEC_VERSION,
+    SCHEMA_VERSION,
+    StructuralCodecError,
+    artifacts_equal,
+    decode_record,
+    dumps_tagged_json,
+    encode_record,
+    loads_tagged_json,
+    structural_key_digest,
+)
+from core.ioh_core.structural_artifacts.competition import (
+    AuditMismatch,
+    AuditReport,
+    CompetitionLibraryError,
+    audit_competition_fixture,
+    audit_library,
+    build_competition_fixture,
+    competition_fixture_root,
+    competition_identity,
+    library_provider,
+    open_competition_fixture,
+    open_library,
+    validate_library_root,
+    write_provenance,
+)
+from core.ioh_core.structural_artifacts.eval_backend import (
+    configure_bundle_structural_backend,
+    configure_eval_context_structural_backend,
+    index_space_from_bundle,
+)
+from core.ioh_core.structural_artifacts.indexing import (
+    StructuralIndexError,
+    candidate_indices_to_structural_id,
+    finish_group_size,
+    finish_variable_names,
+    global_index_to_structural_id,
+    structural_cardinality,
+    structural_id_to_structural_indices,
+    structural_space,
+    structural_variable_names,
+)
+from core.ioh_core.structural_artifacts.library import (
+    SealedStructuralLibrary,
+    finalize_sealed_library,
+    open_structural_library,
+    seal_structural_library,
+)
+from core.ioh_core.structural_artifacts.models import (
+    DEFAULT_ROWS_PER_SHARD,
+    KEY_ALGORITHM_VERSION,
+    LibraryIdentity,
+    LibraryManifest,
+    StructuralLibraryError,
+    assert_problem_id_compatible,
+    run_config_fingerprint,
+)
+from core.ioh_core.structural_artifacts.provider import (
+    ComputeStructuralProvider,
+    LibraryStructuralProvider,
+    StructuralArtifactLookup,
+    StructuralEvaluationProvider,
+    StructuralProviderError,
+    StructuralProviderMetrics,
+    build_structural_provider,
+    resolve_library_lookup_snapshot_hash,
+)
+from core.ioh_core.structural_artifacts.sealing import (
+    StructuralArtifactsSeal,
+    StructuralArtifactsSealError,
+    load_structural_artifacts_seal,
+    open_structural_provider_session,
+    revalidate_structural_artifacts_seal,
+    seal_structural_artifacts_for_experiment,
+)
+
+__all__ = [
+    "CODEC_VERSION",
+    "DEFAULT_ROWS_PER_SHARD",
+    "AuditMismatch",
+    "AuditReport",
+    "CompetitionLibraryError",
+    "ComputeStructuralProvider",
+    "KEY_ALGORITHM_VERSION",
+    "LibraryIdentity",
+    "LibraryManifest",
+    "LibraryStructuralProvider",
+    "SCHEMA_VERSION",
+    "SealedStructuralLibrary",
+    "StructuralArtifact",
+    "StructuralArtifactLookup",
+    "StructuralArtifactsSeal",
+    "StructuralArtifactsSealError",
+    "StructuralCodecError",
+    "StructuralEvaluationProvider",
+    "StructuralIndexError",
+    "StructuralLibraryError",
+    "StructuralProviderError",
+    "StructuralProviderMetrics",
+    "StructuralReuseError",
+    "apply_structural_artifact",
+    "artifacts_equal",
+    "assert_problem_id_compatible",
+    "audit_competition_fixture",
+    "audit_library",
+    "build_competition_fixture",
+    "build_structural_provider",
+    "candidate_indices_to_structural_id",
+    "resolve_library_lookup_snapshot_hash",
+    "capture_structural_artifact",
+    "competition_fixture_root",
+    "competition_identity",
+    "configure_bundle_structural_backend",
+    "configure_eval_context_structural_backend",
+    "decode_record",
+    "dumps_tagged_json",
+    "encode_record",
+    "fanout_build_failure",
+    "finalize_sealed_library",
+    "finish_group_size",
+    "finish_variable_names",
+    "get_structural_build_count",
+    "global_index_to_structural_id",
+    "index_space_from_bundle",
+    "library_provider",
+    "load_structural_artifacts_seal",
+    "loads_tagged_json",
+    "make_structural_key",
+    "normalize_structural_key",
+    "open_competition_fixture",
+    "open_library",
+    "open_structural_library",
+    "open_structural_provider_session",
+    "reset_structural_build_count",
+    "revalidate_structural_artifacts_seal",
+    "run_config_fingerprint",
+    "scientific_values_equal",
+    "seal_structural_artifacts_for_experiment",
+    "seal_structural_library",
+    "structural_cardinality",
+    "structural_id_to_structural_indices",
+    "structural_key_digest",
+    "structural_keys_match",
+    "structural_space",
+    "structural_variable_names",
+    "validate_library_root",
+    "write_provenance",
+]

@@ -1,0 +1,35 @@
+# Full catalogue for L8100_A1. Requires the structural library.
+
+schema_version = 1
+
+[experiment]
+id = "bf_L8100_A1"
+workflow = "brute_force"
+slab_type = "hp_slab"
+problem_ids = ["L8100_A1"]
+output_root = "../../data"
+
+[structural_artifacts]
+mode = "library"
+
+[brute_force]
+rows_per_shard = 10000
+acknowledge_large_run = true
+maximum_expected_rows = 54000000
+maximum_expected_bytes = 500000000000
+reuse_structural_artifacts = true
+
+[execution]
+backend = "local"
+max_parallel_tasks = 4
+timeout_seconds = 7200
+cpus_per_task = 1
+
+[execution.thread_environment]
+OMP_NUM_THREADS = "1"
+MKL_NUM_THREADS = "1"
+OPENBLAS_NUM_THREADS = "1"
+NUMEXPR_NUM_THREADS = "1"
+
+[execution.local]
+python_executable = ""

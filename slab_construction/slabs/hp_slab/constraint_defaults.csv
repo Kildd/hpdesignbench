@@ -1,0 +1,12 @@
+﻿name;kind;enforced;weight;exponent;active_default
+A_bending_capacity;integer;HIDDEN;1;1;True
+B1a_deflection_by_wmax_capacity;integer;HIDDEN;1;1;True
+B2a_failure_announcement_by_wmin_capacity;integer;HIDDEN;1;1;True
+C1_concrete_cover_capacity;integer;HIDDEN;1;1;True
+C2_clear_spacing_capacity;integer;HIDDEN;1;1;True
+C3_shell_thickness_capacity;integer;HIDDEN;1;1;True
+D1_airborne_sound_insulation_capacity;integer;HIDDEN;1;1;True
+D2_impact_sound_insulation_capacity;integer;HIDDEN;1;1;True
+Z1_nt_dt_combination_capacity;integer;HIDDEN;1;1;True
+Z2_beam_theory_H_L_capacity;integer;HIDDEN;1;1;True
+Z3_beam_theory_B_L_capacity;integer;HIDDEN;1;1;True

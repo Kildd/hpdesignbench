@@ -1,0 +1,37 @@
+{
+  "identity": {
+    "finish_names": [
+      "finish_a",
+      "finish_b"
+    ],
+    "finish_sizes": [
+      2,
+      2
+    ],
+    "full_cardinality": 16,
+    "input_hashes": {
+      "fixture": "competition-fixture-v1"
+    },
+    "problem_id": "fixture",
+    "run_config_fingerprint": "7cfc593a5f08e8f02246facd7e9b6445d938a3d8fcf28c031a35955d03d3ddc2",
+    "slab_type": "hp_slab",
+    "snapshot_hash": "competition-fixture-v1",
+    "structural_cardinality": 4,
+    "structural_names": [
+      "s0",
+      "s1"
+    ],
+    "structural_sizes": [
+      2,
+      2
+    ]
+  },
+  "kind_counts": {
+    "build_failure": 1,
+    "mk_cleared": 2,
+    "success": 1
+  },
+  "n_parts": 2,
+  "nrows": 4,
+  "rows_per_shard": 2
+}

@@ -1,0 +1,5 @@
+JobID|State|ExitCode|Reason
+999_0|BOOT_FAIL|1:0|BootFail
+999_1|NODE_FAIL|1:0|NodeFailure
+999_0.batch|FAILED|1:0|ignore
+999_1.extern|FAILED|1:0|ignore

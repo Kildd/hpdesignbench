@@ -1,0 +1,8 @@
+# Catalogue COLON for L6750_B2.
+# Point this at the finished brute-force experiment.
+
+[la]
+schema_version = 1
+experiment_dir = "../../data/runs/exhaustive/bf_L6750_B2"
+source_type = "brute_force"
+families = ["colon"]

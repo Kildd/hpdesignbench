@@ -1,0 +1,20 @@
+Vendored PFN-CEI acquisition code for HpDesignBench.
+
+Provenance
+----------
+Adapted from PFN_CEI.py in:
+  https://github.com/rosenyu304/BOEngineeringBenchmark
+
+Paper
+-----
+Yu, R., Picard, C., & Ahmed, F. (2025). Fast and accurate Bayesian
+optimization with pre-trained transformers for constrained engineering
+problems. Structural and Multidisciplinary Optimization, 68(3), 66.
+
+Notes
+-----
+The upstream repository did not publish an explicit LICENSE file at the
+time of vendoring. This copy is retained for adapter use with attribution.
+HDB patches: removed unused imports (contextlib, scipy, torchvision
+to_tensor, sklearn.power_transform alias); kept CEI acquisition behaviour
+unchanged.

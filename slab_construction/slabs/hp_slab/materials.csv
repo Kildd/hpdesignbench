@@ -1,0 +1,21 @@
+name;type;density [kg/m3];gwp [kg CO2e/kg];gwp_m3 [kg CO2e/m3];cost [Euro/kg];cost_m3 [Euro/m3];Kommentar;f_ck [N/mm2];alpha_cc [-];gamma_c [-];f_yk [N/mm2];f_tk [N/mm2];E_tex [N/mm2];eps_y [promille];eps_u [promille];eps_y_c [promille];eps_u_c [promille];alpha_tex [-];gamma_tex [-];E_dyn [MN/m3]
+C12/15;concrete;2400;;140;;70;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;12;0.85;1.5;;;;;;;;
+C16/20;concrete;2400;;159;;72.5;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;16;0.85;1.5;;;;;;;;
+C20/25;concrete;2400;;178;;75;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;20;0.85;1.5;;;;;;;;
+C25/30;concrete;2400;;197;;80;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;25;0.85;1.5;;;;;;;;
+C30/37;concrete;2400;;219;;85;Referenzbeton C30/37 fuer CFRP-Verhaeltnisse. GWP/Kosten je m3;30;0.85;1.5;;;;;;;;
+C35/45;concrete;2400;;244;;90;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;35;0.85;1.5;;;;;;;;
+C40/50;concrete;2400;;265;;100;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;40;0.85;1.5;;;;;;;;
+C45/55;concrete;2400;;286;;110;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;45;0.85;1.5;;;;;;;;
+C50/60;concrete;2400;;300;;120;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;50;0.85;1.5;;;;;;;;
+C55/67;concrete;2400;;314;;130;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;55;0.85;1.5;;;;;;;;
+C60/75;concrete;2400;;328;;140;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;60;0.85;1.5;;;;;;;;
+C70/85;concrete;2400;;342;;150;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;70;0.85;1.5;;;;;;;;
+C80/95;concrete;2400;;356;;160;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;80;0.85;1.5;;;;;;;;
+C90/105;concrete;2400;;370;;170;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;90;0.85;1.5;;;;;;;;
+C100/115;concrete;2400;;384;;180;Beton: GWP/Kosten je m3. f_ck fuer create_concrete. alpha_cc/gamma_c. Rest EC2-abgeleitet;100;0.85;1.5;;;;;;;;
+solidian Roving 1R (Z-1.6-308);reinforcement;1300;23.30;;49;;GWP/Kosten dokumentarisch. Zielfunktion nutzt mat_reinf_*_crfp/conc. Zulassung: E=240000 MPa, epsuk=12.6 promille. f_tk unabhaengig spezifiziert (nicht E*epsuk). eps in Promille (Loader /1000). eps_*_c=0 ungenutzt;;;;3039;3039;240000;12.6;12.6;0;0;0.83;1.3;
+solidian Roving 2R (Z-1.6-308);reinforcement;1300;23.30;;49;;GWP/Kosten dokumentarisch. Zielfunktion nutzt mat_reinf_*_crfp/conc. Zulassung: epsuk=12.4 promille. E und f_tk unabhaengig spezifiziert (nicht E*epsuk). eps in Promille (Loader /1000). eps_*_c=0 ungenutzt;;;;2917;2917;235000;12.4;12.4;0;0;0.83;1.3;
+generic_infill;infill;1500;0;;;;Ausbau/Fuellung. GWP je kg. Kosten fehlen;;;;;;;;;;;;;
+lightweight_mineral_wool;insulation;24;1.4375;;;;Trittschalldaemmung. GWP je kg. Kosten fehlen. E_dyn in MN/m3;;;;;;;;;;;;;0.6
+generic_screed;screed;2000;0.175;;;;Estrich. GWP je kg. Kosten fehlen;;;;;;;;;;;;;

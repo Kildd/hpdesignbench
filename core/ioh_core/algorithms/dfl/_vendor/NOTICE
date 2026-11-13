@@ -1,0 +1,28 @@
+"""
+Vendored DFLINT (Derivative-Free Library / DFLint).
+
+Upstream
+--------
+https://github.com/DerivativeFreeLibrary/DFLint
+Commit: 99887cc93a5440805a94197c838a9e4263a211a9
+File: DFLINT.py
+SHA-256 (unpatched): e5e555fde22f94957bc30cdd3f008d8452ac0414f4e98eea921f0102eb4ed639
+License: GNU General Public License v3.0
+
+HpDesignBench patches (search for ``HDB:``)
+-------------------------------------------
+1. Fall back to ``core.ioh_core.algorithms.dfl.halton`` when PyPI ``ghalton``
+   is unavailable (sdist-only; requires a C++ toolchain on Windows).
+2. When ``outlev == 0``, open ``os.devnull`` instead of writing
+   ``DFL_INT_log.txt`` into the process working directory.
+3. Do not execute the demo ``davidon2_b(...)`` call at import time.
+4. When ``outlev == 0``, suppress stdout progress lines (log still goes to
+   ``os.devnull``).
+5. Always close the log handle via ``try`` / ``finally`` (including early
+   returns and exceptions from ``func_f``).
+6. After tightening penalty ``eps``, reset non-monotone memory ``W`` as a
+   1-D array of length ``M`` (upstream used shape ``(1, 4)``, which made
+   ``W[0]`` / ``max(W)`` multi-element and raised
+   ``ValueError: The truth value of an array ... is ambiguous`` in
+   linesearch).
+"""
