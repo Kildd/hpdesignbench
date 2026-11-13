@@ -4,6 +4,8 @@ hpdesignbench is a benchmarking framework for discrete structural optimisation o
 
 ## Citation
 
+The Zenodo DOI for this release is [10.5281/zenodo.24197787](https://doi.org/10.5281/zenodo.24197787).
+
 Correspondence: Max Dombrowski, m.dombrowski@tu-berlin.de.
 
 Software authors are Max Dombrowski and Elliot Melcer. The analysis model of the HP shell slab is based on:
