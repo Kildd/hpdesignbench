@@ -1,14 +1,12 @@
 # hpdesignbench
 
-Benchmarking framework for discrete structural design of prestressed CFRP hyperbolic-paraboloid shell slabs. Version 1.0.0 is the citable snapshot that can rerun the associated paper. Finished catalogues, structural libraries, and optimisation logs are not in this repository. The configs under `configs/release/` produce them.
-
-Structural checks use a simply supported one-way strip idealization. They are not a full three-dimensional approval of an HP shell.
+hpdesignbench is a benchmarking framework for discrete structural design of prestressed CFRP hyperbolic-paraboloid shell slabs. Version 1.0.0 provides all capabilities required to reproduce the results from the research articles cited below. Data created with hpdesignbench is not part of this repository. The configs under `configs/release/` can be used to reproduce runs and landscape analysis. This release is licensed under the MIT License.
 
 ## Citation
 
 Please cite both the software and the associated paper.
 
-The software archive is the Zenodo record of the `v1.0.0` release. Its DOI is written into `CITATION.cff` before that tag is created. Until that DOI is present, cite the git tag `v1.0.0` of this repository together with the paper.
+The Zenodo DOI for this research code is [10.5281/zenodo.24195218](https://doi.org/10.5281/zenodo.24195218).
 
 The associated paper, under its working title, is:
 
@@ -16,13 +14,9 @@ The associated paper, under its working title, is:
 
 The title and the author list are replaced when the final reference exists. Correspondence: Max Dombrowski, m.dombrowski@tu-berlin.de.
 
-Software authors are Max Dombrowski and Elliot Melcer. Elliot Melcer wrote the analysis model and its code, based on:
+Software authors are Max Dombrowski and Elliot Melcer. The analysis model is based on:
 
 > Loutfi, J., Dombrowski, M., Merz, P., Eiz Eddin, A., & Schlaich, M. (2024). Interdisciplinary optimisation tool for doubly curved beam-like shell floors made of CFRP prestressed concrete. *Proceedings of the IASS Annual Symposium 2024*, 2024(11), 1–10.
-
-Max Dombrowski wrote the optimisation model. The IASS 2024 paper is the basis of the analysis model. The preferred citation of this release is the paper above.
-
-This snapshot is MIT licensed. The optional `algorithms-blackboxoptim` extra installs a GPL-3.0 package and is not the license of this snapshot. The paper configs do not use it.
 
 ## Installation
 
@@ -121,7 +115,7 @@ hdb-plot interactive --exp data/runs/optimization/penalty_reference
 
 The files are `convergence`, `ecdf`, `ert`, and `heatmap`, under `data/results/optimization/penalty_reference/`. Install the `visualization-interactive` extra first.
 
-Structural drawings are the six scripts in `drawings/`. From the repository root:
+Further plots can be created using the six scripts in `drawings/`. From the repository root:
 
 ```bash
 python drawings/plot_concrete_stress_strain.py
@@ -133,16 +127,6 @@ python drawings/plot_one_mk_panel.py
 ```
 
 They write SVG and PNG files under `drawings/outputs/`.
-
-## Small check
-
-`configs/smoke/optimization_l6750_b2.toml` runs two seeded `RANDOM_SEARCH` repetitions of two evaluations on `L6750_B2`, with the sealed catalogue minimum as the 1% target. Two repetitions are the smallest set the HTML plots will draw. `scripts/fixed_design_l6750_b2.py` evaluates the lower-bound design and prints `y_p`.
-
-```bash
-python scripts/fixed_design_l6750_b2.py
-hdb-experiment run --config configs/smoke/optimization_l6750_b2.toml
-hdb-plot interactive --exp data/runs/optimization/identity_l6750_b2
-```
 
 ## Tests
 
