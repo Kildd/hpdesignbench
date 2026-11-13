@@ -1,6 +1,6 @@
 # hpdesignbench
 
-hpdesignbench is a benchmarking framework for discrete structural design of prestressed CFRP hyperbolic-paraboloid shell slabs. Version 1.0.0 provides all capabilities required to reproduce the results from the research articles cited below. Data created with hpdesignbench is not part of this repository. The configs under `configs/release/` can be used to reproduce runs and landscape analysis. This release is licensed under the MIT License.
+hpdesignbench is a benchmarking framework for discrete structural optimisation of CFRP-prestressed HP shell slabs. Data created with hpdesignbench is not part of this repository. The configs under `configs/release/` can be used to reproduce the runs and landscape analysis from the research articles associated with hpdesignbench. This release is licensed under the MIT License.
 
 ## Citation
 
