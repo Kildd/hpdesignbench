@@ -1,8 +1,6 @@
 cff-version: 1.2.0
-title: hpdesignbench
-message: >-
-  If you use this software, please cite both its Zenodo DOI and the
-  associated paper.
+title: "hpdesignbench: A benchmarking framework for discrete structural optimisation of CFRP-prestressed HP shell slabs"
+message: If you use this software, please cite it using these metadata.
 type: software
 authors:
   - family-names: Dombrowski
@@ -12,26 +10,13 @@ authors:
   - family-names: Melcer
     given-names: Elliot
     affiliation: Technische Universität Berlin
+abstract: >-
+  hpdesignbench is a benchmarking framework for discrete structural
+  optimisation of CFRP-prestressed HP shell slabs. Data created with
+  hpdesignbench is not part of this repository. The configs under
+  configs/release/ can be used to reproduce the optimisation runs and
+  landscape analyses from the research articles associated with
+  hpdesignbench.
 version: 1.0.0
-doi: 10.5281/zenodo.24195218
 license: MIT
 repository-code: "https://github.com/Kildd/hpdesignbench"
-preferred-citation:
-  type: article
-  title: >-
-    Optimisation methods for discrete structural design problems: A case
-    study of HP shell slabs
-  authors:
-    - family-names: Dombrowski
-      given-names: Max
-      email: m.dombrowski@tu-berlin.de
-      affiliation: Technische Universität Berlin
-    - family-names: Melcer
-      given-names: Elliot
-    - family-names: Merz
-      given-names: Paul
-    - family-names: Schlaich
-      given-names: Mike
-    - family-names: Wortmann
-      given-names: Thomas
-  year: 2026
