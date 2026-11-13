@@ -1,20 +1,14 @@
 # hpdesignbench
 
-hpdesignbench is a benchmarking framework for discrete structural optimisation of CFRP-prestressed HP shell slabs. Data created with hpdesignbench is not part of this repository. The configs under `configs/release/` can be used to reproduce the runs and landscape analysis from the research articles associated with hpdesignbench. This release is licensed under the MIT License.
+hpdesignbench is a benchmarking framework for discrete structural optimisation of CFRP-prestressed HP shell slabs. Data created with hpdesignbench is not part of this repository. The configs under `configs/release/` can be used to reproduce the optimisation runs and landscape analyses from the research articles associated with hpdesignbench. This release is licensed under the MIT License.
 
 ## Citation
 
-Please cite both the software and the associated paper.
-
 The Zenodo DOI for this research code is [10.5281/zenodo.24195218](https://doi.org/10.5281/zenodo.24195218).
 
-The associated paper, under its working title, is:
+Correspondence: Max Dombrowski, m.dombrowski@tu-berlin.de.
 
-> Dombrowski, M., Melcer, E., Merz, P., Schlaich, M., & Wortmann, T. (working title). Optimisation methods for discrete structural design problems: A case study of HP shell slabs.
-
-The title and the author list are replaced when the final reference exists. Correspondence: Max Dombrowski, m.dombrowski@tu-berlin.de.
-
-Software authors are Max Dombrowski and Elliot Melcer. The analysis model is based on:
+Software authors are Max Dombrowski and Elliot Melcer. The analysis model of the HP shell slab is based on:
 
 > Loutfi, J., Dombrowski, M., Merz, P., Eiz Eddin, A., & Schlaich, M. (2024). Interdisciplinary optimisation tool for doubly curved beam-like shell floors made of CFRP prestressed concrete. *Proceedings of the IASS Annual Symposium 2024*, 2024(11), 1–10.
 
