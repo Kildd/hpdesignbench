@@ -415,7 +415,10 @@ class TestWarmStartPlannerChain(unittest.TestCase):
             specs = plan_optimization_specs(config)
             self.assertEqual(len(specs), 1)
             expected = str(
-                predesign_initial_design_deb_path("experiments", "L8100_B2")
+                predesign_initial_design_deb_path(
+                    (root / "experiments").resolve(),
+                    "L8100_B2",
+                )
             )
             self.assertEqual(
                 specs[0].algorithm_parameters["initial_design_path"],

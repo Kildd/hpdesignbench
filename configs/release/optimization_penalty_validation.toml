@@ -1,6 +1,8 @@
 # Penalty or constraint-aware optimisation. output_root is relative to this file.
 # Run from any directory:
 #   hdb-experiment run --config configs/release/optimization_penalty_validation.toml
+# Build the structural library first, then each problem's predesign, then this
+# file. The order is in the repository README.
 
 schema_version = 1
 
@@ -30,18 +32,38 @@ max_evaluations = 15000
 [[experiment.algorithms]]
 name = "K_ELITE_AMS_PEN_SI_DESC_COLD_START"
 max_evaluations = 15000
+[experiment.algorithms.parameters]
+archive_size = 40
+n_parents = 20
+mutation_probability = 0.05
+random_restart_probability = 0.10
 
 [[experiment.algorithms]]
 name = "K_ELITE_AMS_PEN_SI_DESC_WARM_START"
 max_evaluations = 15000
+[experiment.algorithms.parameters]
+archive_size = 40
+n_parents = 20
+mutation_probability = 0.05
+random_restart_probability = 0.10
 
 [[experiment.algorithms]]
 name = "K_ELITE_AMS_PEN_EQU_DESC_COLD_START"
 max_evaluations = 15000
+[experiment.algorithms.parameters]
+archive_size = 40
+n_parents = 20
+mutation_probability = 0.05
+random_restart_probability = 0.10
 
 [[experiment.algorithms]]
 name = "K_ELITE_AMS_PEN_EQU_DESC_WARM_START"
 max_evaluations = 15000
+[experiment.algorithms.parameters]
+archive_size = 40
+n_parents = 20
+mutation_probability = 0.05
+random_restart_probability = 0.10
 
 [[experiment.algorithms]]
 name = "DISCRETE_MLSL_PEN_SI_DESC_COLD_START"
@@ -182,6 +204,10 @@ max_evaluations = 15000
 [experiment.repetitions]
 count = 20
 seed_base = 42
+# PBH, AMS, and MLSL equal-descent seeds copy the matching
+# strict-improvement token. Every other seeded algorithm uses
+# its own token. Seedless warm starts are omitted.
+seed_manifest_path = "optimization_penalty_validation_seeds.jsonl"
 
 [experiment.termination]
 mode = "fixed_target"

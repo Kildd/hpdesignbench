@@ -92,6 +92,8 @@ hdb-experiment run --config configs/release/optimization_penalty_reference.toml
 hdb-experiment run --config configs/release/optimization_penalty_validation.toml
 ```
 
+Equal-descent population basin hopping, k-elite AMS, and discrete MLSL take their seeds from the manifest beside each penalty file, so those runs match the recorded strict-improvement seeds. Sobol multistart equal descent keeps its own seed. k-elite AMS is set to an archive of 40 and 20 parents. `RBFOPT` and `RBFOPT_WARM_START` have no solver paths in these files, so a penalty file does not plan until `minlp_solver_path` and `nlp_solver_path` are added. Both names must resolve to Bonmin and Ipopt.
+
 6. Constraint-aware optimisation uses the same budget and the Deb comparator. `BLACKBOXOPT_GOSAC` is excluded. Optuna TPE, cold and warm, is on the reference config only.
 
 ```bash

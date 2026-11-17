@@ -1,6 +1,8 @@
 # Penalty or constraint-aware optimisation. output_root is relative to this file.
 # Run from any directory:
 #   hdb-experiment run --config configs/release/optimization_constrained_validation.toml
+# Build the structural library first, then each problem's predesign, then this
+# file. The order is in the repository README.
 
 schema_version = 1
 
@@ -30,18 +32,38 @@ max_evaluations = 15000
 [[experiment.algorithms]]
 name = "K_ELITE_AMS_DEB_SI_DESC_COLD_START"
 max_evaluations = 15000
+[experiment.algorithms.parameters]
+archive_size = 40
+n_parents = 20
+mutation_probability = 0.05
+random_restart_probability = 0.10
 
 [[experiment.algorithms]]
 name = "K_ELITE_AMS_DEB_SI_DESC_WARM_START"
 max_evaluations = 15000
+[experiment.algorithms.parameters]
+archive_size = 40
+n_parents = 20
+mutation_probability = 0.05
+random_restart_probability = 0.10
 
 [[experiment.algorithms]]
 name = "K_ELITE_AMS_DEB_EQU_DESC_COLD_START"
 max_evaluations = 15000
+[experiment.algorithms.parameters]
+archive_size = 40
+n_parents = 20
+mutation_probability = 0.05
+random_restart_probability = 0.10
 
 [[experiment.algorithms]]
 name = "K_ELITE_AMS_DEB_EQU_DESC_WARM_START"
 max_evaluations = 15000
+[experiment.algorithms.parameters]
+archive_size = 40
+n_parents = 20
+mutation_probability = 0.05
+random_restart_probability = 0.10
 
 [[experiment.algorithms]]
 name = "DISCRETE_MLSL_DEB_SI_DESC_COLD_START"

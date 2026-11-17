@@ -89,6 +89,36 @@ def natural_sort_key(value: str) -> list:
     return key
 
 
+def absolute_output_root(config: ExperimentConfig) -> str:
+    """
+    Resolve ``experiment.output_root`` for paths stored on a task.
+
+    A relative root is resolved from the TOML directory, the same base the
+    experiment directory and the structural library use. Workers start in
+    ``.worker_cwd``, so a relative predesign path would otherwise miss the
+    file written under that data directory.
+
+    Parameters
+    ----------
+    config : ExperimentConfig
+        Validated experiment configuration.
+
+    Returns
+    -------
+    str
+        Absolute output root.
+    """
+    raw = Path(config.experiment.output_root).expanduser()
+    if raw.is_absolute():
+        return str(raw.resolve())
+    base = (
+        config.source_path.parent
+        if config.source_path is not None
+        else Path.cwd()
+    )
+    return str((base / raw).resolve())
+
+
 def derive_random_seed(
     *,
     seed_base: int,
@@ -345,7 +375,9 @@ def plan_optimization_specs(config: ExperimentConfig) -> tuple[OptimizationTaskS
     Seed policy and parameter defaults come from the algorithm registry.
     When ``repetitions.seed_manifest_path`` is set, each required seed is
     taken from that file instead of :func:`derive_random_seed`. The manifest
-    must contain each planned seeded task once and no other task.
+    must contain each planned seeded task once and no other task. Warm-start
+    paths use :func:`absolute_output_root`, so a relative ``output_root`` is
+    stored as an absolute predesign path.
 
     Parameters
     ----------
@@ -371,6 +403,7 @@ def plan_optimization_specs(config: ExperimentConfig) -> tuple[OptimizationTaskS
         )
 
     problem_ids = sorted(config.experiment.problem_ids, key=natural_sort_key)
+    output_root = absolute_output_root(config)
     algorithms = config.experiment.algorithms
     repetitions = config.experiment.repetitions
     slab_type = config.experiment.slab_type
@@ -428,7 +461,7 @@ def plan_optimization_specs(config: ExperimentConfig) -> tuple[OptimizationTaskS
                 task_params = apply_warm_start_parameters(
                     algorithm_name=algorithm.name,
                     parameters=params,
-                    output_root=config.experiment.output_root,
+                    output_root=output_root,
                     problem_id=problem_id,
                     repetition=repetition,
                     repetitions_count=repetitions_count,

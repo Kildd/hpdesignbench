@@ -386,7 +386,12 @@ class TestOptimizationPlanner(unittest.TestCase):
             self.assertNotIn("start_index", spec.algorithm_parameters)
             self.assertEqual(
                 spec.algorithm_parameters["initial_design_path"],
-                str(predesign_initial_design_deb_path("experiments", "2")),
+                str(
+                    predesign_initial_design_deb_path(
+                        (Path(tmp) / "experiments").resolve(),
+                        "2",
+                    )
+                ),
             )
 
     def test_dflint_warm_start_rejects_more_runs_than_design(self) -> None:
@@ -463,6 +468,7 @@ class TestOptimizationPlanner(unittest.TestCase):
                 )
             )
             specs = plan_optimization_specs(config)
+            output_root = (Path(tmp) / "experiments").resolve()
 
         self.assertEqual(len(specs), 10)
         for problem_id in ("1", "2"):
@@ -498,7 +504,7 @@ class TestOptimizationPlanner(unittest.TestCase):
                     spec.algorithm_parameters["initial_design_path"]
                     == str(
                         predesign_initial_design_deb_path(
-                            "experiments", problem_id
+                            output_root, problem_id
                         )
                     )
                     for spec in seeded_warm
@@ -509,7 +515,7 @@ class TestOptimizationPlanner(unittest.TestCase):
             self.assertIsNone(seedless[0].random_seed)
             self.assertEqual(
                 seedless[0].algorithm_parameters["initial_design_path"],
-                str(predesign_initial_design_deb_path("experiments", problem_id)),
+                str(predesign_initial_design_deb_path(output_root, problem_id)),
             )
             expected_optimum = 100.0 if problem_id == "1" else 200.0
             for spec in (*seeded, *seeded_warm, *seedless):
@@ -591,7 +597,12 @@ class TestOptimizationPlanner(unittest.TestCase):
                 self.assertNotIn("start_index", spec.algorithm_parameters)
                 self.assertEqual(
                     spec.algorithm_parameters["initial_design_path"],
-                    str(predesign_initial_design_deb_path("experiments", "2")),
+                    str(
+                        predesign_initial_design_deb_path(
+                            (Path(tmp) / "experiments").resolve(),
+                            "2",
+                        )
+                    ),
                 )
 
 
@@ -738,6 +749,65 @@ class TestOptimizationTerminationSealing(unittest.TestCase):
             )
 
 
+class TestPenaltyReleaseReproduction(unittest.TestCase):
+    """Public penalty configs keep the recorded EQU seeds and AMS settings."""
+
+    def test_reference_equ_seeds_and_ams_parameters(self) -> None:
+        root = Path(__file__).resolve().parents[2]
+        release = root / "configs" / "release"
+        config = load_experiment_config(
+            release / "optimization_penalty_reference.toml"
+        )
+        ams = next(
+            algorithm
+            for algorithm in config.experiment.algorithms
+            if algorithm.name == "K_ELITE_AMS_PEN_EQU_DESC_COLD_START"
+        )
+        self.assertEqual(ams.parameters["archive_size"], 40)
+        self.assertEqual(ams.parameters["n_parents"], 20)
+        manifest = {}
+        manifest_path = release / "optimization_penalty_reference_seeds.jsonl"
+        for line in manifest_path.read_text(encoding="utf-8").splitlines():
+            row = json.loads(line)
+            manifest[(row["algorithm_name"], row["problem_id"], row["repetition"])] = row
+        equ = manifest[(
+            "POPULATION_BASIN_HOPPING_PEN_EQU_DESC_COLD_START",
+            "L6750_B2",
+            0,
+        )]
+        si = manifest[(
+            "POPULATION_BASIN_HOPPING_PEN_SI_DESC_COLD_START",
+            "L6750_B2",
+            0,
+        )]
+        self.assertEqual(equ["random_seed"], 4126416722)
+        self.assertEqual(equ["random_seed"], si["random_seed"])
+        self.assertEqual(
+            equ["si_algorithm"],
+            "POPULATION_BASIN_HOPPING_PEN_SI_DESC_COLD_START",
+        )
+        sobol = manifest[(
+            "SOBOL_MULTISTART_PEN_EQU_DESC_COLD_START",
+            "L6750_B2",
+            0,
+        )]
+        self.assertEqual(
+            sobol["random_seed"],
+            derive_random_seed(
+                seed_base=42,
+                slab_type="hp_slab",
+                problem_id="L6750_B2",
+                algorithm_name="SOBOL_MULTISTART_PEN_EQU_DESC_COLD_START",
+                repetition=0,
+            ),
+        )
+        self.assertNotIn("si_algorithm", sobol)
+        self.assertNotIn(
+            ("OPTAX_ADAM_WARM_START", "L6750_B2", 0),
+            manifest,
+        )
+
+
 class TestWarmStartPlannerParameters(unittest.TestCase):
     def test_apply_warm_start_parameters_sets_the_predesign_path(self) -> None:
         path_tokens = frozenset({"FAKE_WARM_START"})
@@ -799,12 +869,13 @@ class TestWarmStartPlannerParameters(unittest.TestCase):
                 )
             )
             specs = plan_optimization_specs(config)
+            output_root = (Path(tmp) / "experiments").resolve()
         self.assertEqual(len(specs), 4)
         for spec in specs:
             self.assertNotIn("start_index", spec.algorithm_parameters)
             self.assertEqual(
                 spec.algorithm_parameters["initial_design_path"],
-                str(predesign_initial_design_deb_path("experiments", "L8100_B2")),
+                str(predesign_initial_design_deb_path(output_root, "L8100_B2")),
             )
             self.assertIsInstance(spec.random_seed, int)
 
