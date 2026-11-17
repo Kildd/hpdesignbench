@@ -54,7 +54,7 @@ Every release config sets `output_root = "../../data"`. That path is relative to
 
 The 21 instances are spans 6750, 7425, 8100, 8775, 9450, 10125, and 10800 mm, each with loads A1, B1, and B2. Identifiers are `L{span}_{load}`. The reference set is `L6750_B2`, `L8100_B2`, `L9450_B2`, and `L10800_B2`. The other 17 instances are the validation set.
 
-Run the configs from the repository root, in this order.
+Run the configs from the repository root, in this order. Each release config sets `max_parallel_tasks = 20`, so it runs 20 tasks at once. Lower that value when the machine has fewer cores. Each task already uses one core: `cpus_per_task` is 1 and the thread limits are 1.
 
 1. One structural library for all 21 instances:
 
